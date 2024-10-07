@@ -1,36 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 차트 중심 대시보드 설계
+## 레벨업 대시보드 프로젝트의 개요부터 시작하여 프로젝스 설치 및 개발 환경 설정에 대한 지침 제공
 
-## Getting Started
+### 학습 내용
+사용자 계정 관리 및 웹 API 사용 키 발급, 프로젝트 관리 방법, 웹 바이탈 지표의 추출 및 수집 방벙 등을 학습
 
-First, run the development server:
+### 프로젝트 주요 학습
+1. Tremor 라이브러리 이용 => UI 설정
+2. 차트형 대시보드 컴포넌트의 개발
+3. 로딩을 UI하는 스켈레톤 구현
+4. 버셀 배포 플랫폼 배포 및 프로젝트 유지와 관리
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+이 외에도 다양한 기능을 코딩을 따라가보면서 배울 예정
