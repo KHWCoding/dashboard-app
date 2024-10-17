@@ -16,7 +16,7 @@ export default function LogoutForm() {
                 </Button>
             </form>
         </div>
-    )
+    );
 }
 
 export function LogoutButton() {

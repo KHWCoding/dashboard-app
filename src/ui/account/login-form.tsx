@@ -1,6 +1,7 @@
 'use client';
 
-import { AtSymbolIcon, KeyIcon, ExclamationCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { AtSymbolIcon, KeyIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { Button } from "../component/button";
 import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/backend/account-actions";
@@ -26,12 +27,16 @@ export default function LoginForm() {
     return (
         <form action={dispatch} className="space-y-3">
             <div className="flex-1 px-6 pt-8 pb-4 rounded-lg bg-gray-50">
-                {signup === 'success' && <div className="mb-3 text-xl text-center text-blue-600">회원가입 완료 메시지</div>}
+                {signup === 'success' && (
+                    <div className="mb-3 text-xl text-center text-blue-600">
+                        회원가입이 정상적으로 완료 되었습니다.
+                    </div>
+                )}
                 <h1 className="mb-3 text-xl">대시보드를 이용하기 위해 로그인 해 주세요.</h1>
                 <div className="w-full">
                     {/* 이메일 입력 필드 */}
                     <div>
-                        <label className="block mt-5 mb-3 font-normal text-gray-900 text-sm" htmlFor="email">이메일</label>
+                        <label className="block mt-5 mb-3 font-normal text-gray-900 text-xm" htmlFor="email">이메일</label>
                         <div className="relative">
                             <input className={inputStyle} id="email" type="email" name="email" placeholder="Enter your email address" required value={email} onChange={(e) => setEmail(e.target.value)} />
                             <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -39,9 +44,9 @@ export default function LoginForm() {
                     </div>
                     {/* 비밀번호 입력 필드 */}
                     <div className="mt-4">
-                        <label className="block mt-5 mb-3 font-medium text-gray-900 text-sm" htmlFor="password">암호</label>
+                        <label className="block mt-5 mb-3 font-medium text-gray-900 text-xm" htmlFor="password">암호</label>
                         <div className="relative">
-                            <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" id="password" type="password" name="password" placeholder="Enter password" required minLength={6} />
+                            <input className={inputStyle} id="password" type="password" name="password" placeholder="Enter password" required minLength={6} />
                             <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 'use server';
 
-import { string, z } from "zod";
+import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -14,7 +14,7 @@ const CreateProjectSchema = z.object({
 
 export type ProjectState = {
     errors?: { name?: string[]; website_url?: string[]; };
-    message?: string;
+    message?: string | undefined;
 };
 
 export async function createProject(prevState: ProjectState, formData: FormData) {
@@ -26,19 +26,20 @@ export async function createProject(prevState: ProjectState, formData: FormData)
 
     // 유효성 검사 실패 시 에러 반환
     if (!validateFields.success) {
-        return { errors: validateFields.error.flatten().fieldErrors, message: 'Invalid fields.' };
+        return { errors: validateFields.error.flatten().fieldErrors, message: 'Missing or Invalid fields.' };
     }
 
     // 사용자 인증 확인
+    const {name, website_url} = validateFields.data;
     const session = await auth();
     const userEmail = session?.user?.email;
-    if (!userEmail) {
+    if (userEmail === '') {
         return { message: 'Authentication failed.' };
     }
 
     // 중복 프로젝트 확인
     try {
-        const existingProject = await sql`SELECT * FROM projects WHERE name = ${validateFields.data.name}`;
+        const existingProject = await sql`SELECT * FROM projects WHERE name = ${    name}`;
         if (existingProject.rowCount ?? 0 > 0) {
             return { message: 'Project already exists.' };
         }
@@ -48,7 +49,7 @@ export async function createProject(prevState: ProjectState, formData: FormData)
 
     // 새 프로젝트 데이터베이스에 삽입
     try {
-        await sql`INSERT INTO projects (user_email, name, wesite_url) VALUSE (${userEmail}, ${validateFields.data.name}, ${validateFields.data.website_url})`;
+        await sql`INSERT INTO projects (user_email, name, wesite_url) VALUSE (${userEmail}, ${name}, ${website_url})`;
     } catch (error) {
         return { message: 'Failed to create project.' };
     }
@@ -81,12 +82,13 @@ export async function updateProject(id: string, prevState: ProjectState, formDat
 
     // 유효성 검사 실패 시 에러 반환
     if (!validatedFields.success) {
-        return { errors: validatedFields.error.flatten().fieldErrors, message: 'Invalid fields.' };
+        return { errors: validatedFields.error.flatten().fieldErrors, message: 'Missing Fields. Failed to Invalid fields.' };
     }
 
+    const { name, website_url } = validatedFields.data;
     // 데이터베이스 업데이트 시도
     try {
-        await sql`UPDATE projects SET name = ${validatedFields.data.name}, website_url = ${validatedFields.data.website_url} WHERE id = ${id}`;
+        await sql`UPDATE projects SET name = ${name}, website_url = ${website_url} WHERE id = ${id}`;
     } catch (error) {
         return { message: 'Failed to update project.' };
     }

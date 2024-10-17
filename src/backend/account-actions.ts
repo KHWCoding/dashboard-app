@@ -57,8 +57,8 @@ export async function signUp(prevState: string | undefined, formData: FormData) 
         const hashedPassword = await bcrypt.hash(password, 10);
         
         await sql`
-        INSERT INTO users (name, email, password)
-        VALUES (${name}, ${email}, ${hashedPassword})
+        INSERT INTO users (name, email, password, auth_key)
+        VALUES (${name}, ${email}, ${hashedPassword}, ${authKey})
         `;
         // return 'User successfully created.';
     } catch (error) {
