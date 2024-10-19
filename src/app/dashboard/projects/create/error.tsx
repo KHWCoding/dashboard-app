@@ -16,5 +16,5 @@ export default function Error({ error, reset, }: {
             <h2 className="text-center">Something went wrong!</h2>
             <button onClick={() => reset()} className="px-4 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-400">재시도하기</button>
         </main>
-    )
+    );
 }

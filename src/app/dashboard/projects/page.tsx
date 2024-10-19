@@ -6,7 +6,7 @@ import { ProjectTableSkeleton } from '@/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchProjectsPages } from '@/backend/project-data';
 import { Metadata } from 'next';
-import { auth } from '../../../auth';
+import { auth } from '../../../../auth';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -33,7 +33,7 @@ export default async function Page({
 
     return (
         <div className="w-full">
-            {/* 헤더, 검색 바, 생성 버트 */}
+            {/* 헤더, 검색 바, 생성 버튼 */}
             <div className="flex items-center justify-between w-full">
                 <h1 className={`text-2xl`}>프로젝트</h1>
             </div>
