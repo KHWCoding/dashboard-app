@@ -1,6 +1,7 @@
 import '@/ui/globals.css';
 import { notoSansKR } from '@/ui/fonts';
 import { Metadata } from 'next';
+import { WebVitals } from '@/utils/web-vitals';
 
 export const metadata: Metadata = {
   title: {
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${notoSansKR.className} antialiased`}>
+        <WebVitals />
         {children}
       </body>
     </html>

@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.10",
+    "@headlessui/tailwindcss": "^0.2.1",
     "@heroicons/react": "^2.1.5",
-    "@tailwindcss/forms": "^0.5.9",
     "@tremor/react": "^3.18.3",
     "@vercel/postgres": "^0.10.0",
     "autoprefixer": "^10.4.20",
@@ -25,6 +26,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
